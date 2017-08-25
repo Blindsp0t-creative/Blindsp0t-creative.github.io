@@ -69,14 +69,13 @@ function draw() {
             column++;
             img.updatePixels();
         }
-        //image(img, 0, 0, w, h);
-        image(img, 0,0,windowWidth,windowWidth/webcamAspectRatio);
+        if(windowWidth > windowHeight) {image(img, 0,0,windowWidth,windowWidth/webcamAspectRatio);}
+        else {image(img, 0,0,windowWidth,windowWidth*webcamAspectRatio);}
     }
 
     if(live==1)
     {
         capture.loadPixels();
-        //image(capture, 0, 0, w, h);
         if(windowWidth > windowHeight) {image(capture, 0,0,windowWidth,windowWidth/webcamAspectRatio);}
         else {image(capture, 0,0,windowWidth,windowWidth*webcamAspectRatio);}
             
