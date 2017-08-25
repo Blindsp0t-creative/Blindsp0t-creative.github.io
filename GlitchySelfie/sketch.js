@@ -68,30 +68,14 @@ function draw() {
             img.updatePixels();
         }
         //image(img, 0, 0, w, h);
-        if(windowHeight > windowWidth)
-            {
-                image(img, 0,0,windowHeigt/webcamAspectRatio,windowHeight); 
-            }
-        else
-            {
-                image(img, 0,0,windowWidth,windowWidth/webcamAspectRatio);        
-            }
-        
+        image(img, 0,0,windowWidth,windowWidth/webcamAspectRatio);
     }
 
     if(live==1)
     {
         capture.loadPixels();
         //image(capture, 0, 0, w, h);
-        if(windowHeight > windowWidth)
-            {
-                image(capture, 0,0,windowHeigt/webcamAspectRatio,windowHeight);
-            }
-        else
-            {
-                image(capture, 0,0,windowWidth,windowWidth/webcamAspectRatio);        
-            }
-        
+        image(capture, 0,0,windowWidth,windowWidth/webcamAspectRatio);
     }
 }
 
