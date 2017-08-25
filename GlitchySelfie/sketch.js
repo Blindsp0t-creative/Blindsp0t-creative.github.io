@@ -78,7 +78,7 @@ function draw() {
         capture.loadPixels();
         //image(capture, 0, 0, w, h);
         if(windowWidth > windowHeight) {image(capture, 0,0,windowWidth,windowWidth/webcamAspectRatio);}
-        else {image(capture, 0,0,windowWidth/webcamAspectRatio,windowWidth);}
+        else {image(capture, 0,0,windowWidth,windowWidth*webcamAspectRatio);}
             
     }
 }
