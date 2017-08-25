@@ -51,6 +51,8 @@ function setup() {
     
     screenAspectRatio = windowWidth/windowHeight;
     webcamAspectRatio = 640/480;
+    
+    console.log("windowWidth : " + windowWidth + " windowHeight : "+ windowHeight);
 }
 
 
