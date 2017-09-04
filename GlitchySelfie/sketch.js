@@ -23,13 +23,26 @@ var faces;
 
 var screenAspectRatio, webcamAspectRatio;
 
+
+///////////////////////////////////////////////////////////////////////
+function imageUpload(file){
+    live= 0;        
+    img = loadImage(file.data,function(){
+        img.resize(w,h);
+        glitchUploadedPhoto();
+    })    
+}
+
+
 ///////////////////////////////////////////////////////////////////////
 function setup() {
+
+    var uploadBtn = createFileInput(imageUpload);
 
     capture = createCapture(VIDEO);
     //createCanvas(w, h);
     createCanvas(windowWidth,windowHeight);
-    
+
     capture.size(w, h);
     capture.hide();
 
@@ -48,11 +61,13 @@ function setup() {
 
     select("#saveImg").hide();
     select("#restart").hide();
-    
+
     screenAspectRatio = windowWidth/windowHeight;
     webcamAspectRatio = 640/480;
-    
+
     console.log("windowWidth : " + windowWidth + " windowHeight : "+ windowHeight);
+
+
 }
 
 
@@ -78,7 +93,7 @@ function draw() {
         capture.loadPixels();
         if(windowWidth > windowHeight) {image(capture, 0,0,windowWidth,windowWidth/webcamAspectRatio);}
         else {image(capture, 0,0,windowWidth,windowWidth*webcamAspectRatio);}
-            
+
     }
 }
 
@@ -131,6 +146,62 @@ function clickTakePhoto()
     select("#restart").show();
 }
 
+
+function glitchUploadedPhoto()
+{
+    live = 0;
+    if(captured == 0)
+    {
+        faces = detector.detect(img.canvas);    
+        console.log(faces.length);
+
+        if (faces && entireImage == 0) {
+            var nbFaces = 0;
+            faces.forEach(function (face) {
+                var count = face[4];
+                if (count > 3) { 
+                    nbFaces++;
+                    xStartGlitch = face[0];
+                    xStopGlitch = face[0]+face[2];
+                    yStartGlitch = face[1];
+                }
+            })
+        }
+        if(nbFaces > 0)
+        {
+            console.log("face found");
+        }
+        else
+        {
+            //alert("no face found, please try again...");
+            select('#info').elt.innerText = "no face found, glitched entire image ";
+            entireImage = 1;
+            xStartGlitch = 0;
+            xStopGlitch = w;
+            yStartGlitch = 0;
+        }
+        captured=1;
+        if(entireImage == 0)
+        {
+            column = xStartGlitch;
+        }
+    }
+    select("#takePhoto").hide();
+    select("#saveImg").show();
+    select("#restart").show();
+}
+
+
+function clickUpload()
+{
+    console.log("clickUpload()");
+
+
+
+
+
+}
+
 function save2() {
     canvas.toBlob(function(blob) {
         saveAs(blob, "yourGlitchySelfie.png");
@@ -143,7 +214,7 @@ function sortColumn() {
 
     var x = column;
     var y;
-    
+
     if(entireImage == 0)
     { y = yStartGlitch; }
     else
