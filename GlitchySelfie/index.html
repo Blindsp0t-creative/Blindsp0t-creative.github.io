@@ -21,10 +21,11 @@
             .fs {position:fixed; bottom:20px; right:20px;}
             #enter {display:block;}
             #exit {display:none;}
-                max-width: 100%;
-                max-height: 100%;
-                margin: auto;
-                overflow: auto;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+            overflow: auto;
+
         </style>  
     </head>
 
@@ -40,7 +41,7 @@
             <h2>DataMoshing / PixelSort Experiments with <a href="https://p5js.org">P5.js</a></h2>
             <h2>Glitchy Selfies by <a href="http://www.blindsp0t.com">blindsp0t</a> ;)</h2>
         </DIV>
-        
+
         <div STYLE="position:absolute;
                     top:5em;
                     right:0;
@@ -49,11 +50,11 @@
                     background-color:transparent;
                     ">
             <h3>
-             <font color="red" style="font-family:'Courier New'; font-size:15px" > <span id="info"></span> </font>
-                </h3>
+                <font color="red" style="font-family:'Courier New'; font-size:15px" > <span id="info"></span> </font>
+            </h3>
         </div>
-        
-                <div STYLE="position:absolute;
+
+        <div STYLE="position:absolute;
                     top:100px;
                     right:50%;
                     width:300px;
@@ -61,10 +62,10 @@
                     background-color:transparent;
                     ">
             <h3>
-             <font color="red" style="font-family:'Courier New'; font-size:15px" > <span id="progress"></span> </font>
-                </h3>
+                <font color="red" style="font-family:'Courier New'; font-size:15px" > <span id="progress"></span> </font>
+            </h3>
         </div>
-        
+
         <div STYLE="height: 40px; 
                     position: fixed; 
                     bottom:5%;
@@ -74,15 +75,16 @@
                     display: flex;
                     ">
             <button id="takePhoto" onclick="clickTakePhoto()" style="font-weight: bold;  font-size: 150%;  text-transform: uppercase;">take photo</button>
-            
+            <button id="uploadPhoto" onclick="clickUpload()" style="font-weight: bold;  font-size: 150%;  text-transform: uppercase; margin-left:3px;">upload photo</button>
+
             <button id="saveImg" onclick="save2()" style="font-weight: bold;  font-size: 150%;  text-transform: uppercase;">save</button>
-            
+
             <button id="restart" onclick="location.reload();" style="font-weight: bold;  font-size: 150%;  text-transform: uppercase; margin-left:3px;">take another photo</button>
-            
+
         </div>
 
-            </body>
+    </body>
 
-        </html>
+</html>
 
 

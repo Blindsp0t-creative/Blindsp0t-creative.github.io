@@ -29,6 +29,8 @@ function imageUpload(file){
     live= 0;        
     img = loadImage(file.data,function(){
         img.resize(w,h);
+        image(img, 0,0,w,h);
+        
         glitchUploadedPhoto();
     })    
 }
@@ -67,9 +69,14 @@ function setup() {
 
     console.log("windowWidth : " + windowWidth + " windowHeight : "+ windowHeight);
 
+    var abcElements = document.querySelectorAll('input');
 
+    // Set their ids
+    for (var i = 0; i < abcElements.length; i++)
+        abcElements[i].id = 'inputElement';
+    
+    select("input").hide();
 }
-
 
 ///////////////////////////////////////////////////////////////////////
 function draw() {
@@ -142,6 +149,7 @@ function clickTakePhoto()
         }
     }
     select("#takePhoto").hide();
+    select("#uploadPhoto").hide();
     select("#saveImg").show();
     select("#restart").show();
 }
@@ -187,6 +195,7 @@ function glitchUploadedPhoto()
         }
     }
     select("#takePhoto").hide();
+    select("#uploadPhoto").hide();
     select("#saveImg").show();
     select("#restart").show();
 }
@@ -195,11 +204,7 @@ function glitchUploadedPhoto()
 function clickUpload()
 {
     console.log("clickUpload()");
-
-
-
-
-
+    document.getElementById("inputElement").click();
 }
 
 function save2() {
